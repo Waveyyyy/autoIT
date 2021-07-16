@@ -4,7 +4,7 @@
  Author:         Callum Shanks
 
  Script Function:
-	Automatically navigate to one of my GitHub repos and download a file.
+	Automatically navigate to one of my GitHub repos and download a markdown file.
 
 	Just using to learn how to use web handles etc. within autoIT
 
@@ -31,10 +31,6 @@ WinWaitActive("Untitled - Notepad")
 Send("^v")
 
 Local $aFilename = StringRegExp(ClipGet(), '(?:# )([a-z].*)', $STR_REGEXPARRAYMATCH)
-Local $vFilePath = "C:\Users\callumsh\Documents\"
+Local $vFilePath = "C:\Users\%username%\Documents\"
 
-Send("^+s")
-
-Send($aFilename[0] & ".md" & "{TAB}{DOWN}{DOWN}{ENTER}")
-Send("!d" & $vFilePath)
-Send("!s")
+Send("^+s" & $aFilename[0] & ".md" & "{TAB}{DOWN}{DOWN}{ENTER}" & "!d" & $vFilePath & "!s")
