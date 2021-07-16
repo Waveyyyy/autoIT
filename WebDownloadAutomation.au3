@@ -8,6 +8,8 @@
 
 	Just using to learn how to use web handles etc. within autoIT
 
+	v1.1 concatenated multiple Send commmands into one long Send command
+	     changed filepath to be universal to any user
 #ce ----------------------------------------------------------------------------
 
 ;################
