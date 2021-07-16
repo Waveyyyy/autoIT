@@ -10,6 +10,10 @@
 
 	v1.1 concatenated multiple Send commmands into one long Send command
 	     changed filepath to be universal to any user
+
+	v1.2 removed unused include ("MsgBoxConstants.au3")
+	     Program closes windows that it opens, using handles
+
 #ce ----------------------------------------------------------------------------
 
 ;################
@@ -17,7 +21,6 @@
 ;################
 
 #include <IE.au3>
-#include <MsgBoxConstants.au3>
 #include <StringConstants.au3>
 
 Local $vIE_URL = "https://raw.githubusercontent.com/Waveyyyy/dotfiles/main/README.md"
@@ -36,3 +39,10 @@ Local $aFilename = StringRegExp(ClipGet(), '(?:# )([a-z].*)', $STR_REGEXPARRAYMA
 Local $vFilePath = "C:\Users\%username%\Documents\"
 
 Send("^+s" & $aFilename[0] & ".md" & "{TAB}{DOWN}{DOWN}{ENTER}" & "!d" & $vFilePath & "!s")
+
+Local $hWnd = WinWaitActive("[CLASS:Notepad]")
+
+WinKill($hWnd)
+
+$hWnd = WinWaitActive("[CLASS:IEFrame]")
+WinKill($hWnd)
